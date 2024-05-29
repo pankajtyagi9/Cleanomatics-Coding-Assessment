@@ -1,78 +1,218 @@
 * {
-  /* This directive changes every element's padding behavior. */
-  /* Widths will be *inclusive* of padding and borders, which makes them more predictable. */
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  /* These text styles will cascade through every child of the body, unless they are overridden. */
-  /* If Arial is not found, use the browser's fallback sans-serif font. */
-  font-family: Arial, sans-serif;
-  color: #000000;
-
-  margin: 0;
-  padding: 0;
+    font-family: 'Arial, sans-serif';
+    background: linear-gradient(to right, #74ebd5, #9face6);
+    color: #333;
+    line-height: 1.6;
 }
 
-.site-view {
-  /* This lets us arrange the child elements of the main view in a row. */
-  display: flex;
-  flex-direction: row;
+header {
+    background: #007BFF;
+    padding: 1em;
+    text-align: center;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 2.5em;
 }
 
 nav {
-  /* The `flex` attribute controls the width of the column *relative* to other columns. */
-  /* Since the total `flex` attributes sum to 10, the nav will take up 20% of the horizontal width. */
-  flex: 2;
-
-  background-color: #ed2828;
-  text-align: center;
-  padding: 10px;
+    background: #fff;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Style all link tags within nav elements */
 nav a {
-  background-color: #28ed31;
-  padding: 8px;
-  margin-top: 7px;
-  display: block;
-  width: 100%;
-  color: black;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: #007BFF;
+    margin: 0 0.5em;
+    padding: 0.5em 1em;
+    font-size: 1.2em;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
 }
 
-/* Makes sure affected elements don't exceed the bounds of their container. */
-/* Handy for images! */
-.responsive {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-/* This can be handy for centering content, but doesn't work if we don't set */
-/* the width of the element first. */
-/* Flexbox is a lot more, well, flexible! */
-.centered {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+nav a:hover {
+    background: #0056b3;
+    transform: translateY(-3px);
 }
 
 main {
-  background-color: #dd2118;
-  flex: 6;
-  padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 200px); 
+    text-align: center;
+    padding: 2em;
+}
+
+section {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 2em;
+    max-width: 600px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.2em;
+    color: #555;
+}
+
+nav:after {
+    content: '';
+    display: block;
+    margin: 1em auto;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, #007BFF, #74ebd5);
+}
+
+section:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 10px;
+    background: linear-gradient(to right, #74ebd5, #9face6);
+    border-radius: 5px;
+}
+
+a:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 3px;
+    background: #007BFF;
+    transition: width 0.3s;
+    margin: 5px auto 0;
+}
+
+a:hover:after {
+    width: 100%;
 }
 
 footer {
-  background-color: #49cad2;
-  flex: 2;
-  padding: 15px;
+    background-color: #333;
+    color: #fff;
+    padding: 40px 0 20px;
+    font-family: 'Arial', sans-serif;
 }
 
-@media only screen and (max-width: 720px) {
-  /* For mobile phones. Try resizing your browser window or using developer tools to trigger this responsive layout! */
-  .site-view {
-    /* The main sections are still in a Flexbox layout; this just changes the Flexbox configuration */
-    /* so that adjacent elements will render vertically instead of horizontally. */
-    flex-direction: column;
-  }
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
+
+.footer-section {
+    flex: 1;
+    margin: 20px;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section form {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    text-decoration: underline;
+}
+
+.footer-section.links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section.contact p {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.footer-section.contact i {
+    margin-right: 10px;
+}
+
+.footer-section.newsletter form {
+    display: flex;
+}
+
+.footer-section.newsletter input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+}
+
+.footer-section.newsletter button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+.footer-section.newsletter button:hover {
+    background-color: #0056b3;
+}
+
+.footer-section.social .social-links {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-section.social .social-links a {
+    color: #fff;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.footer-section.social .social-links a:hover {
+    color: #007bff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px 0;
+    border-top: 1px solid #444;
+    margin-top: 20px;
+}
+
+.footer-bottom p {
+    margin: 0;
+    font-size: 14px;
+}
+
