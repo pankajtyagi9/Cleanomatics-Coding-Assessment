@@ -34,7 +34,7 @@ function createVehicleOptions() {
 }
 
 function calculateTimeAndFuel(distance, vehicle) {
-  const time = distance / (vehicle.topSpeed * 0.9); // average speed at 90% of top speed
+  const time = distance / (vehicle.topSpeed * 0.9); 
   const fuelNeeded = distance / vehicle.fuelEfficiency;
   const inRange = distance <= vehicle.maxRange;
   return { time, fuelNeeded, inRange };
@@ -42,8 +42,10 @@ function calculateTimeAndFuel(distance, vehicle) {
 
 document.getElementById('calculate-time').addEventListener('click', () => {
   const distance = parseFloat(document.getElementById('distance').value);
+  const validationMessage = document.getElementById('validation-message');
+  validationMessage.innerHTML = '';
   if (isNaN(distance) || distance <= 0) {
-      alert('Please enter a valid distance');
+      validationMessage.innerHTML = 'Please enter a valid distance';
       return;
   }
   const vehicleIndex = parseInt(document.querySelector('input[name="vehicle"]:checked').value);
@@ -66,7 +68,6 @@ function createComparisonSelect(id) {
       console.error(`Select container ${id} not found`);
       return;
   }
-  
   const select = document.createElement('select');
   select.className = 'vehicle-select';
   vehicles.forEach((vehicle, index) => {
@@ -80,8 +81,10 @@ function createComparisonSelect(id) {
 
 document.getElementById('compare-two-vehicles').addEventListener('click', () => {
   const distance = parseFloat(document.getElementById('distance').value);
+  const validationMessage = document.getElementById('validation-message');
+  validationMessage.innerHTML = '';
   if (isNaN(distance) || distance <= 0) {
-      alert('Please enter a valid distance');
+      validationMessage.innerHTML = 'Please enter a valid distance';
       return;
   }
   const vehicle1Index = parseInt(document.querySelector('#select-vehicle1 select').value);
@@ -112,8 +115,10 @@ document.getElementById('compare-two-vehicles').addEventListener('click', () => 
 
 document.getElementById('compare-all-vehicles').addEventListener('click', () => {
   const distance = parseFloat(document.getElementById('distance').value);
+  const validationMessage = document.getElementById('validation-message');
+  validationMessage.innerHTML = '';
   if (isNaN(distance) || distance <= 0) {
-      alert('Please enter a valid distance');
+      validationMessage.innerHTML = 'Please enter a valid distance';
       return;
   }
   const comparisonResultDiv = document.getElementById('all-vehicles-comparison-result');

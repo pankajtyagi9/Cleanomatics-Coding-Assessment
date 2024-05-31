@@ -46,8 +46,8 @@ function createVehicleOptions() {
 }
 
 function calculateDistanceAndFuel(time, vehicle) {
-    const totalTimeInHours = time.hours + (time.minutes / 60); // Convert time to total hours
-    const distance = totalTimeInHours * (vehicle.topSpeed * 0.9); // Distance = Speed * Time
+    const totalTimeInHours = time.hours + (time.minutes / 60); 
+    const distance = totalTimeInHours * (vehicle.topSpeed * 0.9); 
     const fuelNeeded = distance / vehicle.fuelEfficiency;
     const inRange = distance <= vehicle.maxRange;
     return { distance, fuelNeeded, inRange };
@@ -56,10 +56,14 @@ function calculateDistanceAndFuel(time, vehicle) {
 document.getElementById('calculate-distance').addEventListener('click', () => {
     const hours = parseInt(document.getElementById('hours').value);
     const minutes = parseInt(document.getElementById('minutes').value);
+    const validationMessage = document.getElementById('validation-message');
+    validationMessage.innerHTML = '';
+    
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || minutes < 0 || minutes >= 60) {
-        alert('Please enter valid time values');
+        validationMessage.innerHTML = 'Please enter valid time values';
         return;
     }
+    
     const time = { hours, minutes };
     const vehicleIndex = parseInt(document.querySelector('input[name="vehicle1"]:checked').value);
     const vehicle = vehicles[vehicleIndex];
@@ -78,10 +82,14 @@ document.getElementById('calculate-distance').addEventListener('click', () => {
 document.getElementById('compare-vehicles').addEventListener('click', () => {
     const hours = parseInt(document.getElementById('hours').value);
     const minutes = parseInt(document.getElementById('minutes').value);
+    const validationMessage = document.getElementById('validation-message');
+    validationMessage.innerHTML = '';
+
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || minutes < 0 || minutes >= 60) {
-        alert('Please enter valid time values');
+        validationMessage.innerHTML = 'Please enter valid time values';
         return;
     }
+
     const time = { hours, minutes };
     const comparisonResultDiv = document.getElementById('comparison-result');
     comparisonResultDiv.innerHTML = '<h3>Comparison Results:</h3>';
@@ -104,10 +112,14 @@ document.getElementById('compare-vehicles').addEventListener('click', () => {
 document.getElementById('compare-two-vehicles').addEventListener('click', () => {
     const hours = parseInt(document.getElementById('hours').value);
     const minutes = parseInt(document.getElementById('minutes').value);
+    const validationMessage = document.getElementById('validation-message');
+    validationMessage.innerHTML = '';
+
     if (isNaN(hours) || isNaN(minutes) || hours < 0 || minutes < 0 || minutes >= 60) {
-        alert('Please enter valid time values');
+        validationMessage.innerHTML = 'Please enter valid time values';
         return;
     }
+
     const time = { hours, minutes };
     const vehicleIndex1 = parseInt(document.querySelector('input[name="vehicle1"]:checked').value);
     const vehicleIndex2 = parseInt(document.querySelector('input[name="vehicle2"]:checked').value);
